@@ -58,7 +58,7 @@ class SearchEngine:
         return rsp
 
 
-def google_official_search(query: str, num_results: int = 8, focus=['snippet', 'link', 'title']) -> dict | list[dict]:
+def google_official_search(query: str, num_results: int = 8, focus=None) -> dict | list[dict]:
     """Return the results of a Google search using the official Google API
 
     Args:
@@ -68,6 +68,7 @@ def google_official_search(query: str, num_results: int = 8, focus=['snippet', '
     Returns:
         str: The results of the search.
     """
+    focus = ['snippet', 'link', 'title'] if focus is None else focus
 
     from googleapiclient.discovery import build
     from googleapiclient.errors import HttpError
